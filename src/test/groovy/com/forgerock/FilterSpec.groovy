@@ -29,7 +29,7 @@ class FilterSpec extends Specification {
     }
 
     def "find user with age greater than 30"() {
-        given: "a greater than expression"
+        given:
             FilterData filterData = new FilterData(key, targetData)
             Expression greateThanExpression = new GreaterThanExpression(filterData)
         and:
@@ -46,7 +46,7 @@ class FilterSpec extends Specification {
     }
 
     def "find administrator that older than 30: complex filter"() {
-        given: "a greater than expression"
+        given:
             FilterData greaterThanfilterData = new FilterData(greaterKey, greaterData)
             Expression greaterThanExpression = new GreaterThanExpression(greaterThanfilterData)
         and:
