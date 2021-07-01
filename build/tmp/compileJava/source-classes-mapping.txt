@@ -10,3 +10,5 @@ com/forgerock/expressions/ExpressionWithAnd.java
  com.forgerock.expressions.ExpressionWithAnd
 com/forgerock/expressions/FilterData.java
  com.forgerock.expressions.FilterData
+com/forgerock/expressions/ExpressBuilder.java
+ com.forgerock.expressions.ExpressBuilder

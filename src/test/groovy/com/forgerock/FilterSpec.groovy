@@ -1,6 +1,7 @@
 package com.forgerock
 
 import com.forgerock.expressions.EqualExpression
+import com.forgerock.expressions.ExpressBuilder
 import com.forgerock.expressions.Expression
 import com.forgerock.expressions.ExpressionWithAnd
 import com.forgerock.expressions.FilterData
@@ -67,6 +68,29 @@ class FilterSpec extends Specification {
              "age"     |  "30"       | "role"   | "administrator" |  false
              "age"     |  "35"       | "role"   | "accountant"    |  false
              "age"     |  "abc"      | "role"   | "administrator" |  false
+    }
+
+    def "find administrator that older than 30: with a query builder"() {
+        given:
+            FilterData greaterThanfilterData = new FilterData(greaterKey, greaterData)
+            Expression greaterThanExpression = new GreaterThanExpression(greaterThanfilterData)
+            ExpressBuilder expressionBuilder = new ExpressBuilder(greaterThanExpression);
+        and:
+            FilterData equalfilterData = new FilterData(equalKey, equalData)
+            Expression equalExpression = new EqualExpression(equalfilterData)
+        and: "Build expression"
+            testObj = new Filter(expressionBuilder.and(equalExpression).build())
+        when:
+            boolean result = testObj.match(getUserData())
+        then:
+            result == expectedResult
+        where:
+            greaterKey | greaterData | equalKey | equalData       | expectedResult
+            "age"     |  "35"       | "role"   | "administrator" |  true
+            "age"     |  "35"       | "role"   | "Administrator" |  true
+            "age"     |  "30"       | "role"   | "administrator" |  false
+            "age"     |  "35"       | "role"   | "accountant"    |  false
+            "age"     |  "abc"      | "role"   | "administrator" |  false
     }
 
     def 'Filter a list of users whose role is administrator'() {

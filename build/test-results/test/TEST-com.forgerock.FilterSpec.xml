@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.forgerock.FilterSpec" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-01T14:15:51" hostname="OSTML0231644" time="0.116">
+<testsuite name="com.forgerock.FilterSpec" tests="20" skipped="0" failures="0" errors="0" timestamp="2021-07-01T18:54:42" hostname="OSTML0231644" time="0.159">
   <properties/>
-  <testcase name="Filter a list of users whose role is administrator" classname="com.forgerock.FilterSpec" time="0.116"/>
+  <testcase name="find user with role equal to administrator role administrator true" classname="com.forgerock.FilterSpec" time="0.09"/>
+  <testcase name="find user with role equal to administrator role secretary false" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find user with role equal to administrator" classname="com.forgerock.FilterSpec" time="0.128"/>
+  <testcase name="find user with age greater than 30 [key: age, targetData: 25, expectedResult: false, #0]" classname="com.forgerock.FilterSpec" time="0.004"/>
+  <testcase name="find user with age greater than 30 [key: age, targetData: 35, expectedResult: true, #1]" classname="com.forgerock.FilterSpec" time="0.001"/>
+  <testcase name="find user with age greater than 30 [key: age, targetData: 30, expectedResult: false, #2]" classname="com.forgerock.FilterSpec" time="0.001"/>
+  <testcase name="find user with age greater than 30" classname="com.forgerock.FilterSpec" time="0.01"/>
+  <testcase name="find administrator that older than 30: complex filter [greaterKey: age, greaterData: 35, equalKey: role, equalData: administrator, expectedResult: true, #0]" classname="com.forgerock.FilterSpec" time="0.004"/>
+  <testcase name="find administrator that older than 30: complex filter [greaterKey: age, greaterData: 35, equalKey: role, equalData: Administrator, expectedResult: true, #1]" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find administrator that older than 30: complex filter [greaterKey: age, greaterData: 30, equalKey: role, equalData: administrator, expectedResult: false, #2]" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find administrator that older than 30: complex filter [greaterKey: age, greaterData: 35, equalKey: role, equalData: accountant, expectedResult: false, #3]" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find administrator that older than 30: complex filter [greaterKey: age, greaterData: abc, equalKey: role, equalData: administrator, expectedResult: false, #4]" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find administrator that older than 30: complex filter" classname="com.forgerock.FilterSpec" time="0.01"/>
+  <testcase name="find administrator that older than 30: vary complex filter [greaterKey: age, greaterData: 35, equalKey: role, equalData: administrator, expectedResult: true, #0]" classname="com.forgerock.FilterSpec" time="0.006"/>
+  <testcase name="find administrator that older than 30: vary complex filter [greaterKey: age, greaterData: 35, equalKey: role, equalData: Administrator, expectedResult: true, #1]" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find administrator that older than 30: vary complex filter [greaterKey: age, greaterData: 30, equalKey: role, equalData: administrator, expectedResult: false, #2]" classname="com.forgerock.FilterSpec" time="0.001"/>
+  <testcase name="find administrator that older than 30: vary complex filter [greaterKey: age, greaterData: 35, equalKey: role, equalData: accountant, expectedResult: false, #3]" classname="com.forgerock.FilterSpec" time="0.0"/>
+  <testcase name="find administrator that older than 30: vary complex filter [greaterKey: age, greaterData: abc, equalKey: role, equalData: administrator, expectedResult: false, #4]" classname="com.forgerock.FilterSpec" time="0.001"/>
+  <testcase name="find administrator that older than 30: vary complex filter" classname="com.forgerock.FilterSpec" time="0.013"/>
+  <testcase name="Filter a list of users whose role is administrator" classname="com.forgerock.FilterSpec" time="0.032"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
