@@ -99,8 +99,10 @@ class FilterSpec extends Specification {
             Expression equalExpression = new EqualExpression(filterData)
         and:
             testObj = new Filter(equalExpression)
+        and:
+            List list = [getUserData(), ["role": "administrator"], ["role": "secretary"]]
         when:
-            def result = [userData, ["role": "administrator"], ["role": "secretary"]].findAll {testObj.match(it) }
+            def result = list.findAll {testObj.match(it) }
         then:
             result.size() == 2
     }
