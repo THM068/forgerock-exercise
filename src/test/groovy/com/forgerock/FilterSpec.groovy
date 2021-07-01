@@ -69,6 +69,18 @@ class FilterSpec extends Specification {
              "age"     |  "abc"      | "role"   | "administrator" |  false
     }
 
+    def 'Filter a list of users whose role is administrator'() {
+        given:
+            FilterData filterData = new FilterData("role", "administrator")
+            Expression equalExpression = new EqualExpression(filterData)
+        and:
+            testObj = new Filter(equalExpression)
+        when:
+            def result = [userData, ["role": "administrator"], ["role": "secretary"]].findAll {testObj.match(it) }
+        then:
+            result.size() == 2
+    }
+
     private LinkedHashMap getUserData() {
         return [
                 "firstname": "Joe",
